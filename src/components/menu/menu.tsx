@@ -25,7 +25,7 @@ export default async function Menu(){
     }
 
     return (
-        <ul id='menu' className='flex font-bold gap-8 p-4'>
+        <ul  className='menu'>
             <li>
                 <Link href='/'>Home</Link>
             </li>

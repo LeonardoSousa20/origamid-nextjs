@@ -3,6 +3,7 @@ import {Label} from "@/components/ui/label";
 import {Input} from "@/components/ui/input";
 import {Button} from "@/components/ui/button";
 import {useState} from "react";
+import {login} from "@/actions/login";
 
 
 export default function Form() {
@@ -13,14 +14,7 @@ export default function Form() {
 
     async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
-        const response = await fetch("/api/login", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(user)
-        })
-        if(response.ok) window.location.href= '/'
+        await login(user)
     }
     return (
 
@@ -32,7 +26,7 @@ export default function Form() {
                 </div>
                 <div className='flex flex-col items-start gap-1'>
                     <Label htmlFor='password'>Password</Label>
-                    <Input id='password' type='password' placeholder='´Password' onChange={(e) => setUser({...user, [e.target.id]: e.target.value})}/>
+                    <Input id='password' type='password' placeholder='Password' onChange={(e) => setUser({...user, [e.target.id]: e.target.value})}/>
                 </div>
                 <div>
                     <Button className='cursor-pointer' >Entrar</Button>
