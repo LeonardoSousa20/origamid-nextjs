@@ -4,12 +4,10 @@ import {useState} from "react";
 import {getCookie} from "@/actions/get-cookie";
 
 export default function Home() {
-  const [valor, setValor] = useState('');
   const [cookieValue, setCookieValue] = useState('')
 
   async function handleClick(){
     const response = await setCookie('segredo', '123456')
-      setValor(response.funcionou)
   }
 
   async function handleGetCookie(){
