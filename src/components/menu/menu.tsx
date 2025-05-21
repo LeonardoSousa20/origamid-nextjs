@@ -1,37 +1,17 @@
-import Link from "next/link";
-import {cookies} from "next/headers";
+import Link from 'next/link';
 
-
-type Conta ={
-    autorizado:boolean;
-    usuario:string;
-}
-
-export default async function Menu(){
-    let conta: Conta = {
-        autorizado: false,
-        usuario: ''
-    }
-    const appCookies = await cookies()
-    const token = appCookies.get('token')?.value
-    const response = await fetch('https://api.origamid.online/conta/perfil', {
-        headers: {
-            'authorization': `Bearer ${token}`
-        }
-    })
-
-    if(response.ok){
-        conta = await response.json() as Conta
-    }
-
-    return (
-        <ul id='menu' className='flex font-bold gap-8 p-4'>
-            <li>
-                <Link href='/'>Home</Link>
-            </li>
-            <li>
-                {conta.autorizado ? conta.usuario : <Link href='/login'>Login</Link>}
-            </li>
-        </ul>
-    )
+export default async function Menu() {
+  return (
+    <ul className="flex flex-wrap list-none gap-8 font-semibold mb-8">
+      <li>
+        <Link href="/">Home</Link>
+      </li>
+      <li>
+        <Link href="/produto">Produtos</Link>
+      </li>
+      <li>
+        <Link href="/produto/adicionar">Adicionar Produto</Link>
+      </li>
+    </ul>
+  );
 }
