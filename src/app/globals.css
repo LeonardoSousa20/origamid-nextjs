@@ -3,6 +3,19 @@
 
 @custom-variant dark (&:is(.dark *));
 
+html{
+  margin: 1rem;
+}
+h1{
+  font-size: 2.0rem;
+  font-weight: bold;
+  margin-bottom:  1.5rem;
+}
+h2{
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom:  1.5rem;
+}
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
